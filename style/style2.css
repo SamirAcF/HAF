@@ -1,0 +1,130 @@
+
+
+html,body,main{
+	height:100%;
+}
+body{
+	margin: 0px;
+	margin-top: -16px;
+}
+/*#accueil{
+	height:100%;
+	background-color :#ADD8E6;
+
+}
+#commercant{
+	height:100%;
+	background-color :#ADD8E6;
+
+}
+#actualites{
+	height:100%;	
+	background-color :#ADD8E6;
+}
+#infos{
+	height:100%;
+	background-color :#ADD8E6;
+}*/
+header{
+  	position: fixed;
+  	z-index: 1;
+  	padding-top: 20px;
+	padding-bottom: 20px;
+  	width: 100%;
+  	display: inline-block;
+  	font-family: 'Roboto', sans-serif;
+  	font-size: 16px;
+  	background-color: rgba(255,255,255,0.3);
+}
+
+nav{
+	position: relative;
+  	top: 50%; /* poussé de la moitié de hauteur du référent */
+  	transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+  	display: block;
+  	text-align: center;
+  	padding: none;
+}
+ a{
+ 	text-decoration: none;
+ 	color : #000080;
+ 	/*color:#b1c216;*/
+ }
+ .titreSup{
+	font-weight: 2em;
+	text-transform: uppercase;
+ }
+ .centre{
+ 	text-align: center;
+ 	font-family: 'Catamaran', sans-serif;
+ 	font-weight: 300;
+ }
+ .boiteCom{
+ 	display: block;
+ 	margin: auto;
+ 	width: 45%;
+ 	height: 80%;
+ 	/*border: 1px solid rgba(66,99,255,0.5);*/
+ 	border-radius: 10px;
+	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);;
+ 	background-color: rgba(255,255,255,0.5);
+ }
+section{
+	height: 100%;
+}
+.Hcommercant{
+  	position: inherit;
+  	z-index: 1;
+  	padding-top: 0px;
+	padding-bottom: 0px;
+  	width: 100%;
+  	display: block;
+  	font-family: 'Roboto', sans-serif;
+  	font-size: 16px;
+  	background-color: rgba(255,255,255,0.3);
+}
+.Hcommercant h2{
+	margin: none;
+}
+.logo
+{
+	width: 300px;
+	height: 300px;
+	min-width: 5%;
+	min-height: 5%;
+	margin: auto;
+	display: block;
+	
+}
+.descCom{
+	color: #000;
+	text-align: center;
+	font-family: 'Nunito';
+	font-size: 1.5em;
+	padding-bottom: 20%;
+}
+.imageCom{
+	max-height: 80%; /*ICI CA MARCHE*/
+	display: block;
+	margin: auto;
+}
+.fp-tooltip{
+	border: 1px black;
+	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);;
+	border-radius: 5px;
+	background-color: rgba(0,0,0,0.5);
+	padding : 6px;
+	list-style-type: none;
+}
+
+#myMenu li
+{
+	display: inline;
+	margin: 2em;
+	color: black;
+    font-family: 'Noto Sans', sans-serif;
+	font-weight: bolder;
+}
+p{
+	color:white;
+}
