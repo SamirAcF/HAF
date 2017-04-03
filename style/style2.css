@@ -128,3 +128,9 @@ section{
 p{
 	color:white;
 }
+
+li.active>a {
+	cursor: default;
+	color: #000;
+	font-weight: bolder;
+}
