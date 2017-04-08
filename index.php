@@ -53,11 +53,11 @@
 			<div class='section' id="commercant">
 
 				<div class="slide"><header>Les Primeurs</header>
-					<section>
+					<section class="boiteContact">
 						<p>
-							<?php 
-								foreach ($primeur as $key => $value) {
-								 	echo $value;
+							<?php  echo "$primeurs";
+								foreach ($primeurs as $key => $value) {
+								 	echo $value.nom;
 								 }?>		
 						</p>
 					</section>
