@@ -19,13 +19,6 @@
 	<script type="text/javascript" src="libs/jquery-ui.js"></script>
 	<script type="text/javascript" src="libs/jquery.fullPage.min.js"></script>
 
-	<?php
-require_once 'libs/idiorm.php'; //ajout des deux librairies
-require_once 'libs/paris.php';
-require_once 'models/commercants.php'; 
-ORM::configure('sqlite:data/data.sqlite'); //connexion à la bdd 
-?>
-
 </head>
 <body>
 	<!-- HEADER--> 
@@ -58,9 +51,42 @@ ORM::configure('sqlite:data/data.sqlite'); //connexion à la bdd
 			</div>
 <!-- 		Seconde Slide : Les Commerçants  -->
 			<div class='section' id="commercant">
-					<?php afficheCom('Bertand','fromager','images/fromager.jpg','Venez rencontrer JBM le bg des bg'); ?>
-					<?php afficheCom('Michael','génie du mal','images/fromager.jpg','Venez rencontrer Samy le bg des bg'); ?>
-			</div>	
+
+				<div class="slide"><header>Les Primeurs</header>
+					<section>
+						<p>
+							<?php 
+								foreach ($primeur as $key => $value) {
+								 	echo $value;
+								 }?>		
+						</p>
+					</section>
+				</div>
+				<!-- ------------------------------------------ -->	
+				<div class="slide"><header>Les Rotissiers</header>
+				</div>
+				<!-- ------------------------------------------ -->	
+				<div class="slide"><header>Les Poissoniers</header>
+				</div>
+				<!-- ------------------------------------------ -->	
+				<div class="slide"><header>Les Fromagers</header>
+				</div>
+				<!-- ------------------------------------------ -->	
+				<div class="slide"><header>Les Epiciers</header>
+				</div>
+				<!-- ------------------------------------------ -->	
+				<div class="slide"><header>Les Traiteurs</header>
+				</div>
+				<!-- ------------------------------------------ -->	
+				<div class="slide"><header>Les Bouchers</header>
+				</div>
+				<!-- ------------------------------------------ -->	
+				<div class="slide"><header>Les Cavistes</header>
+				</div>
+				<!-- ------------------------------------------ -->	
+				<div class="slide"><header>Les Boulangers</header>
+				</div>	
+			</div>
 
 
 			<div class='section' id="actualites">Some section</div>
@@ -166,7 +192,7 @@ $(document).ready(function() {
 	});
 });
 
-window.onload = sliderAuto;
+//window.onload = sliderAuto;
 
 function sliderAuto(){
 		setInterval(function(){$.fn.fullpage.moveSlideRight();},5000);
