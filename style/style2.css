@@ -61,9 +61,11 @@ nav{
  }
  .boiteCom{
  	display: block;
+ 	margin-right:10px;
+ 	margin-left: 10px;
  	margin: auto;
- 	width: 45%;
- 	height: 80%;
+ 	width: 90%;
+ 	height: 70%;
 	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);;
  	background-color: rgba(255,255,255,0.5);
  }
@@ -74,6 +76,9 @@ nav{
  	height: 60%;
 	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);;
  	background-color: rgba(255,255,255,0.5);
+ }
+ .conteneurCom{
+ 	width: 80%;
  }
 footer{
 	width: 100%;

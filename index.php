@@ -51,41 +51,49 @@
 			</div>
 <!-- 		Seconde Slide : Les Commerçants  -->
 			<div class='section' id="commercant">
-
-				<div class="slide"><header>Les Primeurs</header>
-					<section class="boiteContact">
-						<p>
-							<?php  echo "$primeurs";
-								foreach ($primeurs as $key => $value) {
-								 	afficheCom($value)
-								 }?>		
-						</p>
-					</section>
-				</div>
+				<?php  
+					slide("primeurs",$primeurs);
+				?>	
 				<!-- ------------------------------------------ -->	
-				<div class="slide"><header>Les Rotissiers</header>
-				</div>
+				
+				<?php  
+					slide("rotissiers",$rotissiers);
+				?>	
 				<!-- ------------------------------------------ -->	
-				<div class="slide"><header>Les Poissoniers</header>
-				</div>
+				
+				<?php  
+					slide("poissoniers",$poissoniers);
+				?>	
 				<!-- ------------------------------------------ -->	
-				<div class="slide"><header>Les Fromagers</header>
-				</div>
+				
+				<?php  
+					slide("fromagers",$fromagers);
+				?>	
 				<!-- ------------------------------------------ -->	
-				<div class="slide"><header>Les Epiciers</header>
-				</div>
+				
+				<?php  
+					slide("epiciers",$epiciers);
+				?>	
 				<!-- ------------------------------------------ -->	
-				<div class="slide"><header>Les Traiteurs</header>
-				</div>
+				
+				<?php  
+					slide("traiteurs",$traiteurs);
+				?>	
 				<!-- ------------------------------------------ -->	
-				<div class="slide"><header>Les Bouchers</header>
-				</div>
+				
+				<?php  
+					slide("bouchers",$bouchers);
+				?>	
 				<!-- ------------------------------------------ -->	
-				<div class="slide"><header>Les Cavistes</header>
-				</div>
+				
+				<?php  
+					slide("cavistes",$cavistes);
+				?>	
 				<!-- ------------------------------------------ -->	
-				<div class="slide"><header>Les Boulangers</header>
-				</div>	
+				
+				<?php  
+					slide("boulangers",$boulangers);
+				?>	
 			</div>
 
 
