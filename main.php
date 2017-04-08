@@ -47,7 +47,7 @@ function afficheCom($obj,$tab){?>
 // fonction qui servira a afficher une slide
 function slide($nom,$var){?>
 	<div class="slide">
-		<header>Les <?php echo $nom; ?></header>
+		<header class="titreSlide">Les <?php echo $nom; ?></header>
 		<section class="conteneurCom grid grid-pad">
 			<p>
 				<?php

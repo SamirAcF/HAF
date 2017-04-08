@@ -188,7 +188,6 @@ $(document).ready(function() {
 		slideSelector: '.slide',
 
 		lazyLoading: true,
-
 		//events
 		onLeave: function(index, nextIndex, direction){},
 		afterLoad: function(anchorLink, index){},
@@ -197,13 +196,17 @@ $(document).ready(function() {
 		afterResponsive: function(isResponsive){},
 		afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
 		onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
-	});
+	});	
+
 });
 
-//window.onload = sliderAuto;
+$(window).ready(function() {
+	$.fn.fullpage.moveSlideRight();
+	$.fn.fullpage.moveSlideLeft();
+});
 
 function sliderAuto(){
-		setInterval(function(){$.fn.fullpage.moveSlideRight();},5000);
+		setInterval(function(){$.fn.fullpage.moveSlideRight();},10000);
 }
 </script>
 </body>
