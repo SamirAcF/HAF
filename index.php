@@ -187,7 +187,7 @@ $(document).ready(function() {
 		sectionSelector: '.section',
 		slideSelector: '.slide',
 
-		lazyLoading: true,
+		lazyLoading: false,
 		//events
 		onLeave: function(index, nextIndex, direction){},
 		afterLoad: function(anchorLink, index){},
@@ -195,18 +195,11 @@ $(document).ready(function() {
 		afterResize: function(){},
 		afterResponsive: function(isResponsive){},
 		afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
-		onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
+		onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){$(".titreSlide").css('width','11.111111%')}
 	});	
 
 });
 
-$(window).ready(function() {
-	$.fn.fullpage.moveSlideRight();
-	$.fn.fullpage.moveSlideLeft();
-});
 
-function sliderAuto(){
-		setInterval(function(){$.fn.fullpage.moveSlideRight();},10000);
-}
 </script>
 </body>

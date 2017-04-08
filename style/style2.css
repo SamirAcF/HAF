@@ -48,7 +48,7 @@ nav{
  	/*color:#b1c216;*/
  }
  .titreSup{
-	font-weight: 2em;
+	font-size: 2em;
 	text-transform: uppercase;
  }
  .centre{
@@ -76,8 +76,12 @@ nav{
  	width: 80%;
  }
  .titreSlide{
- 	width:11.1111111%;
+ 	width:100%;
  	margin-top: 0.22em;
+ 	font-size: 2em; 
+ 	text-align: center;
+ 	font-family: 'Catamaran', sans-serif;
+ 	font-weight: 200;
  }
 footer{
 	width: 100%;
