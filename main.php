@@ -2,7 +2,7 @@
 function afficheCom($nom,$commerce,$cheminImage,$desc){?>
 	<div class="slide">
 		<article class=" boiteCom">
-			<header class="Hcommercant">
+			<header class="Hboite">
 				<h2><?php echo $nom; ?> le <?php echo $commerce?></h2>
 			</header>
 			<section class='dispCom'>

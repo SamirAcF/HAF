@@ -64,9 +64,29 @@ ORM::configure('sqlite:data/data.sqlite'); //connexion à la bdd
 
 
 			<div class='section' id="actualites">Some section</div>
-			<div class='section' id="infos">Some section</div>
+
+			<!-- Dernière slide : La communication -->
+			<div class='section' id="infos">
+				
+				<article class="boiteContact">
+					<header class="Hboite">
+					<h2>Contactez nous !</h2>
+					</header>
+					<section class>
+						<ul>
+							<li>Téléphone : 0123456789</li>
+							<li>Courriel : test@test.fr</li>
+							<li><address>	</address></li>
+						</ul>
+					</section>
+				</article>
+
+			</div>
 		</div>
 	</main>
+	<footer>
+		<p>test</p>	
+	</footer>
 	<script type="text/javascript">
 
 $(document).ready(function() {
