@@ -1,5 +1,5 @@
 <?php
-class Article extends Model {
-public static $_table = 'Commercants';
+class commercants extends Model {
+public static $_table = 'commercants';
 }
 ?>
