@@ -6,18 +6,25 @@
 <head>
 	<title>Bienvenue sur le site de la Halle au Frais</title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style/normalize.css">
 	<link rel="stylesheet" type="text/css" href="style/style2.css">
 	<link rel="stylesheet" type="text/css" href="style/simplegrid.css">
-	<link rel="stylesheet" type="text/css" href="style/normalize.css">
 	<link rel="stylesheet" type="text/css" href="style/jquery.fullPage.css"/>
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> 
 	<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Catamaran:300,400" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-	<script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="scripts/jquery-ui.js"></script>
-	<script type="text/javascript" src="scripts/jquery.fullPage.min.js"></script>
+	<script type="text/javascript" src="libs/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="libs/jquery-ui.js"></script>
+	<script type="text/javascript" src="libs/jquery.fullPage.min.js"></script>
+
+	<?php
+require_once 'libs/idiorm.php';
+require_once 'libs/paris.php';
+
+ORM::configure('sqlite:data/data.sqlite'); 
+?>
 
 </head>
 <body>
