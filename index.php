@@ -13,17 +13,17 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> 
 	<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Catamaran:300,400" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Catamaran:300,400,200" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 	<script type="text/javascript" src="libs/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="libs/jquery-ui.js"></script>
 	<script type="text/javascript" src="libs/jquery.fullPage.min.js"></script>
 
 	<?php
-require_once 'libs/idiorm.php';
+require_once 'libs/idiorm.php'; //ajout des deux librairies
 require_once 'libs/paris.php';
-
-ORM::configure('sqlite:data/data.sqlite'); 
+require_once 'models/commercants.php'; 
+ORM::configure('sqlite:data/data.sqlite'); //connexion à la bdd 
 ?>
 
 </head>
@@ -68,14 +68,6 @@ ORM::configure('sqlite:data/data.sqlite');
 		</div>
 	</main>
 	<script type="text/javascript">
-
-/*$('li a').click(function(){
-	$('li').each(function(i) {
-		$(this).removeClass('active');
-	});
-	$(this).parent().addClass('active');
-});*/
-
 
 $(document).ready(function() {
 	$('#fullpage').fullpage({
@@ -154,9 +146,9 @@ $(document).ready(function() {
 	});
 });
 
-window.onload = faireChier;
+window.onload = sliderAuto;
 
-function faireChier(){
+function sliderAuto(){
 		setInterval(function(){$.fn.fullpage.moveSlideRight();},5000);
 }
 </script>
