@@ -57,7 +57,7 @@
 						<p>
 							<?php  echo "$primeurs";
 								foreach ($primeurs as $key => $value) {
-								 	echo $value.nom;
+								 	afficheCom($value)
 								 }?>		
 						</p>
 					</section>

@@ -18,16 +18,29 @@ $bouchers = ModelCom::where('categorie', '7');
 $cavistes = ModelCom::where('categorie', '8');
 $boulangers = ModelCom::where('categorie', '9');*/
 
-
-function afficheCom($nom,$commerce,$cheminImage,$desc){?>
-		<article class=" boiteCom">
-			<header class="Hboite">
-				<h2><?php echo $nom; ?> le <?php echo $commerce?></h2>
-			</header>
-			<section class='dispCom'>
-				<img class='imageCom' src='<?php echo $cheminImage;?>' />
-				<p class="descCom"><?php echo $desc; ?></p>
-			</section>
-		</article><?php
+// fonction qui servira a afficher un commercant
+function afficheCom($obj){?>
+	<article class="boiteCom">
+		<header class="Hboite">
+			<h2><?php echo $obj->nom; ?></h2>
+		</header>
+		<section class='dispCom'>
+			<p class="descCom"><?php echo $obj->desc; ?></p>
+		</section>
+	</article><?php
 }
+// fonction qui servira a afficher une slide
+function slide($nom){?>
+	<div class="slide"><header><?php echo $nom ?></header>
+		<section class="boiteContact">
+			<p>
+				<?php  echo "$primeurs";
+					foreach ($primeurs as $key => $value) {
+					 	afficheCom($value)
+					 }?>		
+			</p>
+		</section>
+	</div><?php
+}
+
 ?>
