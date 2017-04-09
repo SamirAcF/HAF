@@ -37,10 +37,13 @@ $boulangers = Model::factory('Commercants')
 function afficheCom($obj,$tab){?>
 	<article class="boiteCom col-1-<?php echo count($tab); ?>">
 		<header class="Hboite">
-			<h2><?php echo $obj->nom; ?></h2>
+			<h2 class="nomComm"><?php echo $obj->nom; ?></h2>
 		</header>
 		<section class='dispCom'>
-			<p class="descCom"><?php echo $obj->desc; ?></p>
+			<p class="descCom"><?php echo $obj->description; ?></p>
+			<?php if($obj->email):?>
+				<p class="descCom">Nous contacter <?php echo $obj->email; ?></p>
+			<?php endif;?>
 		</section>
 	</article><?php
 }
