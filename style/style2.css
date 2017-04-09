@@ -44,8 +44,8 @@ nav{
 }
  a{
  	text-decoration: none;
- 	color : #000080;
- 	/*color:#b1c216;*/
+ 	/*color : #000080;*/
+ 	color:#b1c216;
  }
  .titreSup{
 	font-size: 2em;
@@ -78,7 +78,7 @@ nav{
  }
  .titreSlide{
  	width:100%;
- 	margin-top: 0.2em;
+ 	margin-top: 0.25em;
  	font-size: 1.2em; 
  	text-align: center;
  	font-family: 'Catamaran', sans-serif;
@@ -123,10 +123,9 @@ section{
 	
 }
 .descCom{
-	color: #000;
-	text-align: center;
+	color: #444;
 	font-family: 'Nunito';
-	font-size: 1.5em;
+	font-size: 1.1em;
 	padding-bottom: 20%;
 }
 .imageCom{
@@ -156,7 +155,8 @@ p{
 }
 
 li.active>a {
-	cursor: default;
-	color: #000;
-	font-weight: bolder;
+	cursor : default;
+ 	color:#f0f0f0;
+ 	font-size: 1.1em;
+	font-weight : bolder;
 }
