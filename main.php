@@ -43,25 +43,24 @@ function afficheCom($obj,$tab){?>
 
 
 			<?php if($obj->description): //Vérification de la présence d'une description dans la base?>
-				<p class="descCom"><?php echo $obj->description; ?></p>
+				<p class="descCom"><?php echo $obj->description; ?>
 			<?php endif;
 
 			if($obj->email): //Vérification de la présence d'une adresse mail dans la base?>
-				<p class="descCom">Nous contacter :<?php echo $obj->email; ?></p>
+				<p>Nous contacter :<?php echo $obj->email; ?></p>
 			<?php endif;
 			
 			$fixe=separerFixePortable($obj->telephone)[0]; // on traite les numeros de téléphone
 			$portable=separerFixePortable($obj->telephone)[1];
-			echo $portable.$fixe;
 			if($fixe != "" ): ?>
-				<p class="descCom">Numéro de téléphone :<?php echo $fixe; ?></p>
+				<p>Numéro de téléphone : <?php echo $fixe; ?></p>
 			<?php  endif;
 			if($portable != ""):?>
-				<p class="descCom">Numero de portable :<?php echo $portable; ?></p>
+				<p>Numero de portable : <?php echo $portable; ?></p>
 			<?php endif;
 
-			if($obj->horaire == "classique"): //Vérification du fait que les horraire concorde avec ceux de la halle?>
-				<p class="descCom">Nous somme ouverts du Mardi au Jeudi de 9h à 13h et de 15h à 19h, le vendredi et le samedi de 9h à 19h et le dimanche de 9h à 12h30.</p>
+			if($obj->horaires == "classique"): //Vérification du fait que les horraire concorde avec ceux de la halle?>
+				<p>Nous somme ouverts du Mardi au Jeudi de 9h à 13h et de 15h à 19h, le vendredi et le samedi de 9h à 19h et le dimanche de 9h à 12h30.</p></p>
 			<?php endif;?>
 			
 
@@ -91,11 +90,12 @@ function separerFixePortable($chaine){
 
 	for ($i=0; $i < count($chaine) ; $i++) {
 		//error_log($fixe." ".$portable."\n", 3, "logs.txt");
-		if($toggle!=true){
-			$fixe .= $chaine[$i];
+		if($toggle==false){
 			if($chaine[$i] == ","){
-				$fixe=supprimerDernierCarac($fixe);
 				$toggle=true;
+			}
+			else{
+				$fixe .= $chaine[$i];
 			}
 		}
 		else{
