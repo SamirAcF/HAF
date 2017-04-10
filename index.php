@@ -118,8 +118,8 @@ $(document).ready(function() {
 		navigationPosition: 'right',
 		navigationTooltips: ['Acceuil', 'Commerçants','Actualités', 'Infos Et Contact'],
 		showActiveTooltip: false,
-		slidesNavigation: false,
-		slidesNavPosition: 'top',
+		slidesNavigation: true,
+		slidesNavPosition: 'bottom',
 
 		//Scrolling
 		css3: true,
@@ -134,9 +134,9 @@ $(document).ready(function() {
 		loopTop: false,
 		loopHorizontal: true,
 		continuousVertical: false,
-		continuousHorizontal: false,
-		scrollHorizontally: false,
-		interlockedSlides: false,
+		continuousHorizontal: true,
+		scrollHorizontally: true,
+		interlockedSlides: true,
 		dragAndMove: true,
 		offsetSections: false,
 		resetSliders: false,
@@ -161,7 +161,7 @@ $(document).ready(function() {
 		sectionsColor : ['#008080', '#008080', '#008080', '#008080'],
 		paddingTop: '3em',
 		paddingBottom: '10px',
-		/*fixedElements: '#header, .footer',*/
+		//fixedElements: '#header',
 		responsiveWidth: 0,
 		responsiveHeight: 0,
 		responsiveSlides: false,
