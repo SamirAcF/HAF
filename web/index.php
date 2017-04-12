@@ -1,6 +1,6 @@
-<?php include 'main.php';?>
-
-
+<?php include 'main.php';
+require 'libs/flight/Flight.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
