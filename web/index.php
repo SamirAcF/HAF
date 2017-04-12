@@ -1,5 +1,11 @@
 <?php include 'main.php';
 require 'libs/flight/Flight.php';
+
+Flight::route('/HAF/web/', function(){
+    echo 'hello world!';
+});
+
+Flight::start();/*
 ?>
 <!DOCTYPE html>
 <html>
