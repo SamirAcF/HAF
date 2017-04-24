@@ -1,5 +1,4 @@
-<?php 
-include 'main.php';
+<?php include 'main.php';
 ?>
 <!DOCTYPE html>
 <html>
