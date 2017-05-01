@@ -62,26 +62,34 @@ function afficheCom($obj,$tab){?>
 			if($obj->horaires == "classique"): //Vérification du fait que les horraire concorde avec ceux de la halle?>
 				<p>Nous somme ouverts du Mardi au Jeudi de 9h à 13h et de 15h à 19h, le vendredi et le samedi de 9h à 19h et le dimanche de 9h à 12h30.</p></p>
 			<?php endif;?>
-			
-
 		</section>
-	</article><?php
+	</article>
+
+	<?php
+	if($tab == count($tab)):?>
+
+		<article class="boiteCom col-1-<?php echo ($tab); ?>">		
+			<section class="dispCom">
+				<a href="NouveauCommercant.php">Ajouter un commerçant</a>
+			</section>
+		</article>
+	<?php endif;
 }
 // fonction qui servira a afficher une slide
 function slide($nom,$var){?>
 	<div class="slide">
 		<header class="titreSlide">Les <?php echo $nom; ?></header>
 		<section class="conteneurCom grid grid-pad">
-			<p>
 				<?php
+
 					foreach($var as $key => $value) {
 					 	afficheCom($value,$var);
-					 }
-				?>	
-			</p>
+					}
+				?>
 		</section>
 	</div><?php
 }
+
 function separerFixePortable($chaine){
 	$chaine=str_split($chaine);
 	$fixe ="";
