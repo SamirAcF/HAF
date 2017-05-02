@@ -105,8 +105,13 @@
 					  <span id="helpBlock2" class="help-block"></span>
 					</div>
 					<div >
-					  <label class="control-label" >Telephone</label>
-					  <input type="text" class="form-control"  placeholder="0123456789" name="Telephone" id="Telephone" aria-describedby="helpBlock2">
+					  <label class="control-label" >Telephone Fixe</label>
+					  <input type="text" class="form-control"  placeholder="0123456789" name="TelephoneF" id="Telephone" aria-describedby="helpBlock2">
+					  <span id="helpBlock2" class="help-block"></span>
+					</div>
+					<div >
+					  <label class="control-label" >Telephone Portable</label>
+					  <input type="text" class="form-control"  placeholder="0123456789" name="TelephoneP" id="Telephone" aria-describedby="helpBlock2">
 					  <span id="helpBlock2" class="help-block"></span>
 					</div>
 					<!--<div >

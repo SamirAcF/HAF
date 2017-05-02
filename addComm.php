@@ -1,25 +1,77 @@
-<?php include 'main.php';
+<?php include 'main.php'; 
 include 'commercant.php';
 
-$corres = array('Primeur' => 1, 'Rotissier' => 2, 'Poissonier' => 3, 'Fromager' => 4, 'Epicier' => 5, 'Traiteur' => 6, 'Boucher' =>7, 'Caviste' => 8, 'Boulanger' => 9 );
+$corres = array('Primeur' => 1, 'Rotissier' => 2, 'Poissonnier' => 3, 'Fromager' => 4, 'Epicier' => 5, 'Traiteur' => 6, 'Boucher' =>7, 'Caviste' => 8, 'Boulanger' => 9 );
 
 
 
 $newComm = Model::factory('commercants')->create();
-
-if(isset($_FILE['photoPres'])){
-	gestionImg($_FILE['photoPres']);
+if(isset($_FILES['photoPres']) && isset($_POST['Categories']) && isset($_POST['Nom'])){ // si une photo de présentation a été uploadée, on la traite. On demand cat et nom pour l'organisation.
+	$logo = gestionImg($_FILES['photoPres'], $_POST['Categories'], $_POST['Nom']);
+	if($logo) $newComm->logo = $logo;
 }
-$newComm->nom = htmlspecialchars($_POST['Nom']);
+
+// on échappe l'HTML pour éviter les injections de scripts
+
+$newComm->nom = gestionChamps('Nom');
 $newComm->categorie = htmlspecialchars($corres[$_POST['Categories']]);
-$newComm->site_web = htmlspecialchars($_POST['Site_Web']);
-$newComm->description = htmlspecialchars($_POST['Description']);
-$newComm->telephone = htmlspecialchars($_POST['Telephone']);
-$newComm->email = htmlspecialchars($_POST['Email']);
+$newComm->site_web = gestionChamps('Site_Web');
+$newComm->description = gestionChamps('Description');
+$newComm->telephone = gestionTels('TelephoneF','TelephoneP'); //on gère différement les numéros de téléphone
+$newComm->email = gestionChamps('Email');
 $newComm->save();;
 
-function gestionImg($img){
+function gestionChamps($nomChamps){
+	if(isset($_POST[$nomChamps])){
+		return htmlspecialchars($_POST[$nomChamps]);
+	}
+	else{
+		return 0;
+	}
+}
+
+function gestionTels($fixe,$portable){
 	
+	if(isset($_POST[$fixe])){
+		$num = (string)$_POST[$fixe];
+	}
+	$num .=',';
+	if(isset($_POST[$portable])){
+		$num.= $_POST[$portable];
+	}
+	return $num;
+}
+
+function gestionImg($img,$cat,$nom){
+	$erreur = 0;
+	$extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' ); // on crée le tableau contenant les types autorisés 
+	/*if ($_FILES['icone']['size'] > $maxsize){ // on vérifie que le fichier ne dépasse le poids max autorisé
+		$erreur = "Le fichier est trop gros";
+	}*/
+//1. strrchr renvoie l'extension avec le point (« . »).
+//2. substr(chaine,1) ignore le premier caractère de chaine.
+//3. strtolower met l'extension en minuscules.
+	$extension_upload = strtolower(  substr(  strrchr($img['name'], '.')  ,1)  );
+	if (in_array($extension_upload,$extensions_valides) ){
+		$erreur= 0;
+	} 
+	else{
+		$die('incompatibilité');
+	}
+	
+	if($erreur == 0){ // si erreur vaut encore 0, c'est qu'il n'y en a pas eu
+
+		$struct ="./images/".$cat."/".$nom."/";
+
+		if(mkdir($struct, 0777, true)){
+			//$nom = "images/{$cat}/{$nom}/imagePres.{$extension_upload}"; // on crée le répertoire dans lequel l'image sera envoyée
+			$nom = $struct."photoPres.".$extension_upload;
+			$resultat = move_uploaded_file($img['tmp_name'],$nom);
+			echo "ça marche";
+			return $nom;
+		}
+	}
+	else echo $erreur; // sinon on retourne l'erreur.
 }
 ?>
 <!DOCTYPE html>
@@ -44,4 +96,4 @@ function gestionImg($img){
 <body>
 	<p>Transfert réussi !</p>
 </body>
-</html>	
+</html>
