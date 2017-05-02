@@ -68,7 +68,7 @@ function afficheCom($obj,$tab){?>
 	<?php
 	if($tab == count($tab)):?>
 
-		<article class="boiteCom col-1-<?php echo ($tab); ?>">		
+		<article class="boiteCom col-1-<?php echo ($tab+1)%4; ?>">		
 			<section class="dispCom">
 				<a href="NouveauCommercant.php">Ajouter un commerçant</a>
 			</section>

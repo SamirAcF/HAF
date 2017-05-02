@@ -7,14 +7,20 @@ $corres = array('Primeur' => 1, 'Rotissier' => 2, 'Poissonier' => 3, 'Fromager' 
 
 $newComm = Model::factory('commercants')->create();
 
-
-$newComm->nom = $_POST['Nom'];
-$newComm->categorie = $corres[$_POST['Categories']];
-$newComm->site_web = $_POST['Site_Web'];
-$newComm->description = $_POST['Description'];
-$newComm->telephone = $_POST['Telephone'];
-$newComm->email = $_POST['Email'];
+if(isset($_FILE['photoPres'])){
+	gestionImg($_FILE['photoPres']);
+}
+$newComm->nom = htmlspecialchars($_POST['Nom']);
+$newComm->categorie = htmlspecialchars($corres[$_POST['Categories']]);
+$newComm->site_web = htmlspecialchars($_POST['Site_Web']);
+$newComm->description = htmlspecialchars($_POST['Description']);
+$newComm->telephone = htmlspecialchars($_POST['Telephone']);
+$newComm->email = htmlspecialchars($_POST['Email']);
 $newComm->save();;
+
+function gestionImg($img){
+	
+}
 ?>
 <!DOCTYPE html>
 <html>

@@ -41,7 +41,7 @@
 		<div class="col-9-12">
 				<h1>Commercants</h1>
 			<div class="col-9-12">
-			<form action="addComm.php" method="POST">
+			<form action="addComm.php" method="POST" enctype="multipart/form-data">
 				<div class="content">
 				<article class="content1">
 					<div >
@@ -63,9 +63,15 @@
 					<div>
 					<label class="control-label">Categories</label>
 					<select type="text" class="form-control" name="Categories" id="Categories">
-						  <option>Boulanger</option>
-						  <option>Boucher</option>
+						  <option>Primeur</option>
+						  <option>Rotissier</option>
+						  <option>Poissonnier</option>
 						  <option>Fromager</option>
+						  <option>Epicier</option>
+						  <option>Traiteur</option>
+						  <option>Boucher</option>
+						  <option>Caviste</option>
+						  <option>Boulanger</option>
 						</select>
 					</div>
 
@@ -80,13 +86,13 @@
 					  <input type="text" class="form-control" name="Info_Supplementaires" id="Info_Supplementaires" aria-describedby="helpBlock2">
 					  <span id="helpBlock2" class="help-block"></span>
 					</div>
-
+					-->
 					<div >
-					  <label class="control-label" >Profil</label>
-					  <input type="text" class="form-control" name="Profil" id="Profil" aria-describedby="helpBlock2">
-					  <span id="helpBlock2" class="help-block"></span>
+					  <label class="control-label" >Photo de présentation</label>
+					  <input type="file" class="form-control" name="photoPres" id="photoPres" aria-describedby="helpBlock2">
+					  <span id="helpBlock2" class="help-block">bite</span>
 					</div>
-
+					<!--
 					<div >
 					  <label class="control-label" >Banniere</label>
 					  <input type="text" class="form-control" name="Banniere" id="Banniere" aria-describedby="helpBlock2">
