@@ -1,3 +1,7 @@
+<?php include 'main.php';
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +38,7 @@
 			</div>
 		</div>
 	</header>
-	<!-- CORPS DU SITE --> 
+	<!-- Si le commerçant à modifier est connu --> 
 	<main>
 	<div class="grid grid-pad" >
 		<section id="formulaireshow">
@@ -45,6 +49,7 @@
 				<div class="content">
 				<article class="content1">
 					<div >
+					<?php afficherListe($ensembleComm); /*
 					  <label class="control-label" >Nom du commerce :</label>
 					  <input type="text" class="form-control" placeholder="Nom" name="Nom" id="Nom" aria-describedby="helpBlock2">
 					  <span id="helpBlock2" class="help-block"></span>
@@ -61,7 +66,7 @@
 					</div>
 
 					<div>
-					<label class="control-label" for="Categories">Categories</label>
+					<label class="control-label">Categories</label>
 					<select type="text" class="form-control" name="Categories" id="Categories">
 						  <option>Primeur</option>
 						  <option>Rotissier</option>
@@ -174,7 +179,7 @@
 		<p class='droits'>&copy;Halle au Frais 2017</p>
 	</div>
 
-</footer>
+</footer>*/ ?>
 		</body>
 		</html>
 

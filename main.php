@@ -32,6 +32,8 @@ $cavistes = Model::factory('Commercants')
 $boulangers = Model::factory('Commercants')
     ->where('categorie', '9')
     ->find_many();
+$ensembleComm = Model::factory('Commercants')
+	->find_many();
 
 // fonction qui servira a afficher un commercant
 function afficheCom($obj,$tab){?>
@@ -49,13 +51,10 @@ function afficheCom($obj,$tab){?>
 			if($obj->email): //Vérification de la présence d'une adresse mail dans la base?>
 				<p>Nous contacter :<?php echo $obj->email; ?></p>
 			<?php endif;
-			
-			$fixe=separerFixePortable($obj->telephone)[0]; // on traite les numeros de téléphone
-			$portable=separerFixePortable($obj->telephone)[1];
-			if($fixe != "" ): ?>
+			if($obj->$telephoneF): ?>
 				<p>Numéro de téléphone : <?php echo $fixe; ?></p>
 			<?php  endif;
-			if($portable != ""):?>
+			if($obj->telephoneP):?>
 				<p>Numero de portable : <?php echo $portable; ?></p>
 			<?php endif;
 
@@ -90,33 +89,13 @@ function slide($nom,$var){?>
 	</div><?php
 }
 
-function separerFixePortable($chaine){
-	$chaine=str_split($chaine);
-	$fixe ="";
-	$portable ="";
-	$toggle=false;
+function afficherListe($liste){ ?>
+	<label class="form-label" for="commModif">Commerçant à modifier</label>
+	<select type="text" class="form-control" name="commModif" id="commModif">
+		<?php 
+			foreach ($liste as $elem):?>
+				<option><?php echo $elem->nom; ?></option>			
+			<?php endforeach; ?>
+	</select>
+<?php } ?>
 
-	for ($i=0; $i < count($chaine) ; $i++) {
-		//error_log($fixe." ".$portable."\n", 3, "logs.txt");
-		if($toggle==false){
-			if($chaine[$i] == ","){
-				$toggle=true;
-			}
-			else{
-				$fixe .= $chaine[$i];
-			}
-		}
-		else{
-			$portable .= $chaine[$i];
-		}
-	}	
-	return array($fixe,$portable);
-}
-
-function supprimerDernierCarac($chaine){
-	$chaine=str_split($chaine);
-	array_pop($chaine);
-	implode($retour,$chaine);
-	return $retour;
-}
-?>

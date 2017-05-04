@@ -1,13 +1,13 @@
-<?php include 'main.php'; 
-include 'commercant.php';
+<?php include 'main.php';
 
 $corres = array('Primeur' => 1, 'Rotissier' => 2, 'Poissonnier' => 3, 'Fromager' => 4, 'Epicier' => 5, 'Traiteur' => 6, 'Boucher' =>7, 'Caviste' => 8, 'Boulanger' => 9 );
 
 
 
-$newComm = Model::factory('commercants')->create();
+$newComm = Model::factory('commercants')->create(); //Création d'un champs 
+
 if(isset($_FILES['photoPres']) && isset($_POST['Categories']) && isset($_POST['Nom'])){ // si une photo de présentation a été uploadée, on la traite. On demand cat et nom pour l'organisation.
-	$logo = gestionImg($_FILES['photoPres'], $_POST['Categories'], $_POST['Nom']);
+	$logo = gestionImg($_FILES['photoPres'], $_POST['Categories'], $_POST['Nom']); // $nom
 	if($logo) $newComm->logo = $logo;
 }
 
@@ -17,29 +17,18 @@ $newComm->nom = gestionChamps('Nom');
 $newComm->categorie = htmlspecialchars($corres[$_POST['Categories']]);
 $newComm->site_web = gestionChamps('Site_Web');
 $newComm->description = gestionChamps('Description');
-$newComm->telephone = gestionTels('TelephoneF','TelephoneP'); //on gère différement les numéros de téléphone
+$newComm->telephoneF = gestionChamps('TelephoneF');
+$newComm->telephoneP = gestionChamps('TelephoneP');
 $newComm->email = gestionChamps('Email');
-$newComm->save();;
+$newComm->save();
 
 function gestionChamps($nomChamps){
 	if(isset($_POST[$nomChamps])){
-		return htmlspecialchars($_POST[$nomChamps]);
+		return htmlspecialchars($_POST[$nomChamps]); 
 	}
 	else{
-		return 0;
+		return NULL;
 	}
-}
-
-function gestionTels($fixe,$portable){
-	
-	if(isset($_POST[$fixe])){
-		$num = (string)$_POST[$fixe];
-	}
-	$num .=',';
-	if(isset($_POST[$portable])){
-		$num.= $_POST[$portable];
-	}
-	return $num;
 }
 
 function gestionImg($img,$cat,$nom){
@@ -67,7 +56,6 @@ function gestionImg($img,$cat,$nom){
 			//$nom = "images/{$cat}/{$nom}/imagePres.{$extension_upload}"; // on crée le répertoire dans lequel l'image sera envoyée
 			$nom = $struct."photoPres.".$extension_upload;
 			$resultat = move_uploaded_file($img['tmp_name'],$nom);
-			echo "ça marche";
 			return $nom;
 		}
 	}
