@@ -35,6 +35,13 @@ $boulangers = Model::factory('Commercants')
 $ensembleComm = Model::factory('Commercants')
 	->find_many();
 
+function chercher($champs,$valeur){// requete qui renvoie un commercant en particulier a partir de son nom
+	$res = Model::factory('Commercants')
+    			->where($champs, $valeur)
+    			->find_many(); 
+    return $res;
+}
+
 // fonction qui servira a afficher un commercant
 function afficheCom($obj,$tab){?>
 	<article class="boiteCom col-1-<?php echo count($tab); ?>">
@@ -89,9 +96,9 @@ function slide($nom,$var){?>
 	</div><?php
 }
 
-function afficherListe($liste){ ?>
+function afficherListe($liste,$nomDuChamps){ ?>
 	<label class="form-label" for="commModif">Commerçant à modifier</label>
-	<select type="text" class="form-control" name="commModif" id="commModif">
+	<select type="text" class="form-control" name="<?php echo $nomDuChamps?>" id=<?php $nomDuChamps ?>>
 		<?php 
 			foreach ($liste as $elem):?>
 				<option><?php echo $elem->nom; ?></option>			

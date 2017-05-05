@@ -40,18 +40,18 @@
 	</header>
 	<!-- Si le commerçant à modifier est connu --> 
 	<main>
-	<div class="grid grid-pad" >
-		<section id="formulaireshow">
-		<div class="col-9-12">
-				<h1>Commercants</h1>
-			<div class="col-9-12">
-			<form action="addComm.php" method="POST" enctype="multipart/form-data">
+		<?php if(isset($_POST["A_modif"])):
+		$sujet = chercher("nom",$_POST["A_modif"]);
+		var_dump($sujet);
+		echo("fdsfdsqfezqf zeq $sujet["description"]"); // Transférer modifComm.php avant de changer quoi que ce soit. 
+		?>
+
+			<form action="modifComm.php" method="POST" enctype="multipart/form-data">
 				<div class="content">
 				<article class="content1">
-					<div >
-					<?php afficherListe($ensembleComm); /*
+					<div>
 					  <label class="control-label" >Nom du commerce :</label>
-					  <input type="text" class="form-control" placeholder="Nom" name="Nom" id="Nom" aria-describedby="helpBlock2">
+					  <input type="text" class="form-control" value="<?php echo $sujet["nom"]; ?>" name="Nom" id="Nom" aria-describedby="helpBlock2">
 					  <span id="helpBlock2" class="help-block"></span>
 					</div>
 					<div >
@@ -61,7 +61,7 @@
 					</div>-->
 					<div >
 					  <label class="control-label" >Site Web</label>
-					  <input type="url" class="form-control" name="Site_Web" id="Site_Web" placeholder="www"  aria-describedby="helpBlock2">
+					  <input type="url" class="form-control" name="Site_Web" id="Site_Web" value="<?php echo $sujet["site_web"]; ?>" aria-describedby="helpBlock2">
 					  <span id="helpBlock2" class="help-block"></span>
 					</div>
 
@@ -82,7 +82,7 @@
 
 					<div >
 						<label class="control-label" >Description</label>
-						<input class="form-control" name="Description" id="Description" rows="3">Description</input>
+						<input class="form-control" value="<?php echo $sujet["description"]; ?>" name="Description" id="Description" rows="3">Description</input>
 					</div>
 
 					<!--
@@ -93,8 +93,9 @@
 					</div>
 					-->
 					<div >
-					  <label class="control-label" >Photo de présentation</label>
-					  <input type="file" class="form-control" name="photoPres" id="photoPres" aria-describedby="helpBlock2">
+						<img src="<?php echo $sujet["logo"]; ?>" alt="logo" />
+					  	<label class="control-label" >Changer la photo :</label>
+					  	<input type="file" class="form-control" name="photoPres" id="photoPres" aria-describedby="helpBlock2">
 					  <span id="helpBlock2" class="help-block">bite</span>
 					</div>
 					<!--
@@ -106,17 +107,17 @@
 
 					<div >
 					  <label class="control-label" >Email</label>
-					  <input type="email" class="form-control" placeholder="xyz@email.fr" name="Email" id="Email" aria-describedby="helpBlock2">
+					  <input type="email" class="form-control" value="<?php echo $sujet["email"]; ?>" name="Email" id="Email" aria-describedby="helpBlock2">
 					  <span id="helpBlock2" class="help-block"></span>
 					</div>
 					<div >
 					  <label class="control-label" >Telephone Fixe</label>
-					  <input type="text" class="form-control"  placeholder="0123456789" name="TelephoneF" id="Telephone" aria-describedby="helpBlock2">
+					  <input type="text" class="form-control"  value="<?php echo $sujet["telephoneF"]; ?>" name="TelephoneF" id="Telephone" aria-describedby="helpBlock2">
 					  <span id="helpBlock2" class="help-block"></span>
 					</div>
 					<div >
 					  <label class="control-label" >Telephone Portable</label>
-					  <input type="text" class="form-control"  placeholder="0123456789" name="TelephoneP" id="Telephone" aria-describedby="helpBlock2">
+					  <input type="text" class="form-control" value="<?php echo $sujet["telephoneP"]; ?>" name="TelephoneP" id="Telephone" aria-describedby="helpBlock2">
 					  <span id="helpBlock2" class="help-block"></span>
 					</div>
 					<!--<div >
@@ -157,10 +158,23 @@
 			</div>
 		<div>
 	</article>
--->
+--> 
+
 </div>
 </nav>
 	</div>
+?>
+<?php else: ?>	
+	<div class="grid grid-pad" >
+		<section id="formulaireshow">
+		<div class="col-9-12">
+				<h1>Commercants</h1>
+			<div class="col-9-12">
+			<form action="modifComm.php" method="POST">
+				<?php afficherListe($ensembleComm,"A_modif");?>
+				<input type="submit" name="modifier" />
+			</form>
+<?php endif; ?>
 	</main>
 	<footer>
 	<div class="grid grid-pad">
