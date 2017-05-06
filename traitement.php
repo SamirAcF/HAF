@@ -4,25 +4,25 @@ $corres = array('Primeur' => 1, 'Rotissier' => 2, 'Poissonnier' => 3, 'Fromager'
 
 
 
-$newComm = Model::factory('commercants')->create(); //Création d'un champs 
+$commAmod = Model::factory('commercants')->find_one($_POST['idCommAModif']); //Création d'un champs 
 
 if(($_FILES['photoPres']) && isset($_POST['Categories']) && isset($_POST['Nom'])){ // si une photo de présentation a été uploadée, on la traite. On demand cat et nom pour l'organisation.
 	$logo = gestionImg($_FILES['photoPres'], $_POST['Categories'], $_POST['Nom']); // $nom
-	if($logo) $newComm->logo = $logo;
+	if($logo) $commAmod->logo = $logo;
 }
 
 // on échappe l'HTML pour éviter les injections de scripts
 
-$newComm->nom = gestionChamps('Nom');
-$newComm->categorie = htmlspecialchars($corres[$_POST['Categories']]);
-$newComm->site_web = gestionChamps('Site_Web');
-$newComm->description = gestionChamps('Description');
-$newComm->telephoneF = gestionChamps('TelephoneF');
-$newComm->telephoneP = gestionChamps('TelephoneP');
-$newComm->email = gestionChamps('Email');
-$newComm->save();
+$commAmod->nom = gestionChamps('Nom');
+$commAmod->categorie = htmlspecialchars($corres[$_POST['Categories']]);
+$commAmod->site_web = gestionChamps('Site_Web');
+$commAmod->description = gestionChamps('Description');
+$commAmod->telephoneF = gestionChamps('TelephoneF');
+$commAmod->telephoneP = gestionChamps('TelephoneP');
+$commAmod->email = gestionChamps('Email');
+$commAmod->save();
 
-echo "fdsfdfd".$newComm->nom;
+echo "fdsfdfd".$commAmod->nom;
 
 function gestionChamps($nomChamps){
 	if(isset($_POST[$nomChamps])){
@@ -53,16 +53,16 @@ function gestionImg($img,$cat,$nom){
 	if($erreur == 0){ // si erreur vaut encore 0, c'est qu'il n'y en a pas eu
 
 		$struct ="./images/".$cat."/".$nom."/";
-
-		if(mkdir($struct, 0777, true)){
-			//$nom = "images/{$cat}/{$nom}/imagePres.{$extension_upload}"; // on crée le répertoire dans lequel l'image sera envoyée
-			$nom = $struct."photoPres.".$extension_upload;
-			$resultat = move_uploaded_file($img['tmp_name'],$nom);
-			return $nom;
-		}
+		if(!is_dir($struct)){
+			mkdir($struct, 0777, true);
+		}	
+		$nom = $struct."photoPres.".$extension_upload;
+		$resultat = move_uploaded_file($img['tmp_name'],$nom);
+		return $nom;
 	}
 	else echo $erreur; // sinon on retourne l'erreur.
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -84,6 +84,6 @@ function gestionImg($img,$cat,$nom){
 
 </head>
 <body>
-	<p>Transfert réussi !</p>
+	Transfert réussi !
 </body>
 </html>

@@ -37,8 +37,8 @@ $ensembleComm = Model::factory('Commercants')
 
 function chercher($champs,$valeur){// requete qui renvoie un commercant en particulier a partir de son nom
 	$res = Model::factory('Commercants')
-    			->where($champs, $valeur)
-    			->find_many(); 
+				->where($champs, $valeur)
+    			->find_many();
     return $res;
 }
 
@@ -58,11 +58,11 @@ function afficheCom($obj,$tab){?>
 			if($obj->email): //Vérification de la présence d'une adresse mail dans la base?>
 				<p>Nous contacter :<?php echo $obj->email; ?></p>
 			<?php endif;
-			if($obj->$telephoneF): ?>
-				<p>Numéro de téléphone : <?php echo $fixe; ?></p>
+			if($obj->telephoneF): ?>
+				<p>Numéro de téléphone : <?php echo $obj->telephoneF; ?></p>
 			<?php  endif;
 			if($obj->telephoneP):?>
-				<p>Numero de portable : <?php echo $portable; ?></p>
+				<p>Numero de portable : <?php echo $obj->telephoneP; ?></p>
 			<?php endif;
 
 			if($obj->horaires == "classique"): //Vérification du fait que les horraire concorde avec ceux de la halle?>
