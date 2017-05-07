@@ -1,6 +1,5 @@
 <?php include 'main.php';
 
-$corres = array('Primeur' => 1, 'Rotissier' => 2, 'Poissonnier' => 3, 'Fromager' => 4, 'Epicier' => 5, 'Traiteur' => 6, 'Boucher' =>7, 'Caviste' => 8, 'Boulanger' => 9 );
 
 
 
@@ -20,6 +19,7 @@ $newComm->description = gestionChamps('Description');
 $newComm->telephoneF = gestionChamps('TelephoneF');
 $newComm->telephoneP = gestionChamps('TelephoneP');
 $newComm->email = gestionChamps('Email');
+$newComm->gerant = gestionChamps('Gerant');
 $newComm->save();
 
 echo "fdsfdfd".$newComm->nom;
@@ -47,7 +47,7 @@ function gestionImg($img,$cat,$nom){
 		$erreur= 0;
 	} 
 	else{
-		$die('incompatibilité');
+		//$die('incompatibilité');
 	}
 	
 	if($erreur == 0){ // si erreur vaut encore 0, c'est qu'il n'y en a pas eu

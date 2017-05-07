@@ -79,7 +79,11 @@
 						<label class="control-label" >Description</label>
 						<input class="form-control" name="Description" id="Description" rows="3">Description</input>
 					</div>
-
+					<div>
+					  <label class="control-label" >Nom du commerce :</label>
+					  <input type="text" class="form-control" placeholder="Nom du gérant" name="Gérant" id="Gérant" aria-describedby="helpBlock2">
+					  <span id="helpBlock2" class="help-block"></span>
+					</div>
 					<!--
 					<div >
 					  <label class="control-label" >Info Supplementaires</label>

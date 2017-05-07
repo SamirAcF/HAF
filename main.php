@@ -2,7 +2,9 @@
 
 require_once 'libs/idiorm.php'; //ajout des deux librairies
 require_once 'libs/paris.php';
-require_once 'models/commercants.php'; 
+require_once 'models/commercants.php';
+require_once 'models/categorie.php'; 
+
 ORM::configure('sqlite:data/data.sqlite'); //connexion à la bdd 
 
 $primeurs = Model::factory('Commercants')
@@ -34,7 +36,11 @@ $boulangers = Model::factory('Commercants')
     ->find_many();
 $ensembleComm = Model::factory('Commercants')
 	->find_many();
+$cat = Model::factory('categorie')->find_many();
+var_dump($cat->nom);
 
+$corres = array('Primeur' => 1, 'Rotissier' => 2, 'Poissonnier' => 3, 'Fromager' => 4, 'Epicier' => 5, 'Traiteur' => 6, 'Boucher' =>7, 'Caviste' => 8, 'Boulanger' => 9 );
+$corres2 = array(1=>'Primeur', 2=>'Rotissier', 3=>'Poissonnier', 4=>'Fromager', 5=>'Epicier', 6=>'Traiteur',7=>'Boucher', 8=>'Caviste', 9=>'Boulanger');
 function chercher($champs,$valeur){// requete qui renvoie un commercant en particulier a partir de son nom
 	$res = Model::factory('Commercants')
 				->where($champs, $valeur)
@@ -99,10 +105,17 @@ function slide($nom,$var){?>
 function afficherListe($liste,$nomDuChamps){ ?>
 	<label class="form-label" for="commModif">Commerçant à modifier</label>
 	<select type="text" class="form-control" name="<?php echo $nomDuChamps?>" id=<?php $nomDuChamps ?>>
-		<?php 
-			foreach ($liste as $elem):?>
-				<option><?php echo $elem->nom; ?></option>			
-			<?php endforeach; ?>
+<?php
+			for($i=1; $i<=9; $i+=1):
+				$concern = Model::factory('categorie')->find_one($i);
+?>
+				<optgroup label='<?php echo $concern->nom?>'>
+			
+<?php			$toShow = Model::factory('Commercants')->where('categorie',$i)->find_many();
+				foreach ($toShow as $key=>$elem):?>
+					<option><?php echo $elem->nom; ?></option>			
+				<?php endforeach; ?>
+<?php 		endfor;?>
 	</select>
 <?php } ?>
 

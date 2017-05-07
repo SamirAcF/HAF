@@ -40,7 +40,7 @@
 	</header>
 	<!-- Si le commerçant à modifier est connu --> 
 	<main>
-		<?php if(isset($_POST["A_modif"])):
+		<?php if(isset($_POST["A_modif"]) && $_POST['modifier']):
 		//$sujet = chercher("nom",$_POST["A_modif"]);
 $sujet = Model::factory('commercants')->where('nom', $_POST["A_modif"])->find_one();
 		?>
@@ -163,18 +163,29 @@ $sujet = Model::factory('commercants')->where('nom', $_POST["A_modif"])->find_on
 </div>
 </nav>
 	</div>
+<?php
+		elseif(isset($_POST["A_modif"]) && $_POST['supprimer']):
 ?>
-<?php else: ?>	
-	<div class="grid grid-pad" >
-		<section id="formulaireshow">
-		<div class="col-9-12">
-				<h1>Commercants</h1>
-			<div class="col-9-12">
-			<form action="modifComm.php" method="POST">
-				<?php afficherListe($ensembleComm,"A_modif");?>
-				<input type="submit" name="modifier" />
-			</form>
-<?php endif; ?>
+		Le commerçant a bien été supprimé de la liste.
+<?php 
+		
+		$sujet = Model::factory('commercants')->where('nom', $_POST["A_modif"])->find_one();
+		$sujet->delete();
+		header( 'Location: ./modifComm.php' ) ;
+?>
+
+		<?php else: ?>	
+			<div class="grid grid-pad" >
+				<section id="formulaireshow">
+				<div class="col-9-12">
+						<h1>Commercants</h1>
+					<div class="col-9-12">
+					<form action="modifComm.php" method="POST">
+						<?php afficherListe($ensembleComm,"A_modif");?>
+						<input type="submit" name="modifier" value="Modifier" />
+						<input type="submit" name="supprimer" value="Supprimer le commerçant"/>
+					</form>
+		<?php endif; ?>
 	</main>
 	<footer>
 	<div class="grid grid-pad">
@@ -193,8 +204,15 @@ $sujet = Model::factory('commercants')->where('nom', $_POST["A_modif"])->find_on
 		<p class='droits'>&copy;Halle au Frais 2017</p>
 	</div>
 
-</footer>*/ ?>
+</footer>
 		</body>
+		
+<script type="text/javascript">
+	function test(){
+		alert("hello world");
+	}
+</script>
+
 		</html>
 
 
