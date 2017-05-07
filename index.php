@@ -17,6 +17,7 @@
 	<script type="text/javascript" src="libs/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="libs/jquery-ui.js"></script>
 	<script type="text/javascript" src="libs/jquery.fullPage.min.js"></script>
+	<script type="text/javascript" src="libs/jquery.fullpage.extensions.min.js"></script>
 
 </head>
 <body>

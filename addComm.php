@@ -24,15 +24,6 @@ $newComm->save();
 
 echo "fdsfdfd".$newComm->nom;
 
-function gestionChamps($nomChamps){
-	if(isset($_POST[$nomChamps])){
-		return htmlspecialchars($_POST[$nomChamps]); 
-	}
-	else{
-		return NULL;
-	}
-}
-
 function gestionImg($img,$cat,$nom){
 	$erreur = 0;
 	$extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' ); // on crée le tableau contenant les types autorisés 
