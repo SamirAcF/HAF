@@ -1,4 +1,6 @@
-<?php include 'main.php';
+<?php 
+session_start();
+include 'main.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,10 +22,19 @@
 	
 	</head>
 	<body>
-<?php 	if (isset($_POST['username'])):
+<?php 
+		if(isset($_SESSION["name"]) && isset($_SESSION["name"])): 
+?>	
+			Vous êtes déjà connecté !
+<?php 	elseif(isset($_POST['username']) && isset($_POST['pw'])):
 			$user = Model::factory('admin')->where('user',$_POST["username"])->find_one();
-			if($user->pass == $_POST['pw']):?>
-				La connexion a été effectuée avec succès.
+			if($user->pass == $_POST['pw']): 
+				$_SESSION['name'] = $_POST['name'];//on stock le nom de l'utilisateur
+				$_SESSION['pw'] = $_POST['pw'];
+				?>
+				La connexion a été effectuée avec succès. Redirection automatique vers l'accueil dans 5 secondes.
+<?php			//header("./index.php");
+?>
 <?php 		else: ?>
 				Le mot de passe rentré n'est pas correct.
 <?php  		endif;

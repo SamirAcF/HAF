@@ -1,4 +1,6 @@
-<?php include 'main.php';
+<?php 
+session_start();
+include 'main.php';
 
 $corres = array('Primeur' => 1, 'Rotissier' => 2, 'Poissonnier' => 3, 'Fromager' => 4, 'Epicier' => 5, 'Traiteur' => 6, 'Boucher' =>7, 'Caviste' => 8, 'Boulanger' => 9 );
 

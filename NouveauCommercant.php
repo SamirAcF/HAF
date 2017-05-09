@@ -1,3 +1,8 @@
+<?php 
+session_start();
+include 'main.php';
+
+?>
 <!DOCTYPE html>
 <html>
 <head>

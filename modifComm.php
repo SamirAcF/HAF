@@ -1,4 +1,6 @@
-<?php include 'main.php';
+<?php 
+session_start();
+include 'main.php';
 ?>
 
 
@@ -40,7 +42,8 @@
 	</header>
 	<!-- Si le commerçant à modifier est connu --> 
 	<main>
-		<?php if(isset($_POST["A_modif"]) && $_POST['modifier']):
+<?php 	if(isset($_SESSION["name"]) && isset($_SESSION["name"])){
+			if(isset($_POST["A_modif"]) && $_POST['modifier']):
 		//$sujet = chercher("nom",$_POST["A_modif"]);
 $sujet = Model::factory('commercants')->where('nom', $_POST["A_modif"])->find_one();
 		?>
@@ -126,40 +129,7 @@ $sujet = Model::factory('commercants')->where('nom', $_POST["A_modif"])->find_on
 					  <span id="helpBlock2" class="help-block"></span>
 					</div>-->
 					<input type="submit" value="submit" />
-			<from/>
-
-
-					<!--   simplecaptcha
-					       <img src="/stickyImg" />
-					    <form action="/captchaSubmit.jsp" method="post">
-					    <form action="/captcha.jsp" method="post">
-					        <input name="answer" />
-					    </form>
-					        <audio controls autoplay src="/audio.wav"></audio>
-					    <form action="/captchaSubmit.jsp" method="post">
-					        <input name="answer" />
-					    </form>
-					    -->
-<!-- 
-	<article >
-		<div class="col-9-12">
-     		<div id="pagination_position">
-				  <ul class="pagination">
-				    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-				    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-				    <li class="active"><a href="#">2 <span class="sr-only">(current)</span></a></li>
-				    <li class="active"><a href="#">3 <span class="sr-only">(current)</span></a></li>
-				    <li class="active"><a href="#">4 <span class="sr-only">(current)</span></a></li>
-				    <li class="active"><a href="#">5 <span class="sr-only">(current)</span></a></li>
-				    <li class="active"><a href="#">6 <span class="sr-only">(current)</span></a></li>
-				    <li class="active"><a href="#">7 <span class="sr-only">(current)</span></a></li>
-				    <li class="active"><a href="#">8 <span class="sr-only">(current)</span></a></li>
-				  </ul>	
-			</div>
-		<div>
-	</article>
---> 
-
+			</form>
 </div>
 </nav>
 	</div>
@@ -185,7 +155,8 @@ $sujet = Model::factory('commercants')->where('nom', $_POST["A_modif"])->find_on
 						<input type="submit" name="modifier" value="Modifier" />
 						<input type="submit" name="supprimer" value="Supprimer le commerçant"/>
 					</form>
-		<?php endif; ?>
+		<?php endif; 
+		}//fermeture du if de detection de session?>
 	</main>
 	<footer>
 	<div class="grid grid-pad">
