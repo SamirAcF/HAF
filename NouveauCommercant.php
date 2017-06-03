@@ -79,7 +79,7 @@ include "success.php";
 
 	<!-- FORMULAIRE A REMPLIR -->
 
-<?php 	if(isset($_SESSION["name"]) && isset($_SESSION["name"])): ?>
+<?php 	if(isset($_SESSION["name"]) && isset($_SESSION["pass"])): ?>
 
 	<header>
 		<div class="grid grid-pad">

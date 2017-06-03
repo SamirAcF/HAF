@@ -11,6 +11,7 @@ include 'main.php';
 		<link rel="stylesheet" type="text/css" href="style/style2.css">
 		<link rel="stylesheet" type="text/css" href="style/simplegrid.css">
 		<link rel="stylesheet" type="text/css" href="style/jquery.fullPage.css"/>
+		<link rel="stylesheet" type="text/css" href="style/bootstrap.css"/>
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 		<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> 
 		<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
@@ -22,20 +23,20 @@ include 'main.php';
 	
 	</head>
 	<body>
+
 <?php 
-		if(isset($_SESSION["name"]) && isset($_SESSION["name"])): 
+		if(isset($_SESSION["name"]) && isset($_SESSION["pass"])): 
 ?>	
 			Vous êtes déjà connecté !
 <?php 	elseif(isset($_POST['username']) && isset($_POST['pw'])):
 			$user = Model::factory('admin')->where('user',$_POST["username"])->find_one();
-			if($user->pass == $_POST['pw']): 
-				$_SESSION['name'] = $_POST['name'];//on stock le nom de l'utilisateur
-				$_SESSION['pw'] = $_POST['pw'];
-				include "success.php"
-?>
-<?php 		else: 
+			if($user->pass == hash("sha512",$_POST['pw'])){
+				$_SESSION['name'] = $_POST['username'];//on stock le nom de l'utilisateur
+				$_SESSION['pass'] = sha1($_POST['pw']);
+				include "success.php";
+			}else{ 
 				affiche(TRUE);	
-  			endif;
+  			}
 
 
 ?>
