@@ -40,7 +40,7 @@ include 'main.php';
 			</div>
 		</div>
 	</header>
-	<!-- Si le commerçant à modifier est connu --> 
+	
 	<main>
 		<?php if(isset($_POST['user'])):
 			$newUser = Model::factory('admin')->create();

@@ -4,57 +4,61 @@ include 'main.php';
 
 
 
+if (isset($_POST['Site_Web'])) {
 
-$newComm = Model::factory('commercants')->create(); //Création d'un champs 
+	$newComm = Model::factory('commercants')->create(); //Création d'un champs 
 
-if(($_FILES['photoPres']) && isset($_POST['Categories']) && isset($_POST['Nom'])){ // si une photo de présentation a été uploadée, on la traite. On demand cat et nom pour l'organisation.
-	$logo = gestionImg($_FILES['photoPres'], $_POST['Categories'], $_POST['Nom']); // $nom
-	if($logo) $newComm->logo = $logo;
-}
-
-// on échappe l'HTML pour éviter les injections de scripts
-
-$newComm->nom = gestionChamps('Nom');
-$newComm->categorie = htmlspecialchars($corres[$_POST['Categories']]);
-$newComm->site_web = gestionChamps('Site_Web');
-$newComm->description = gestionChamps('Description');
-$newComm->telephoneF = gestionChamps('TelephoneF');
-$newComm->telephoneP = gestionChamps('TelephoneP');
-$newComm->email = gestionChamps('Email');
-$newComm->gerant = gestionChamps('Gerant');
-$newComm->save();
-
-echo "fdsfdfd".$newComm->nom;
-
-function gestionImg($img,$cat,$nom){
-	$erreur = 0;
-	$extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' ); // on crée le tableau contenant les types autorisés 
-	/*if ($_FILES['icone']['size'] > $maxsize){ // on vérifie que le fichier ne dépasse le poids max autorisé
-		$erreur = "Le fichier est trop gros";
-	}*/
-//1. strrchr renvoie l'extension avec le point (« . »).
-//2. substr(chaine,1) ignore le premier caractère de chaine.
-//3. strtolower met l'extension en minuscules.
-	$extension_upload = strtolower(  substr(  strrchr($img['name'], '.')  ,1)  );
-	if (in_array($extension_upload,$extensions_valides) ){
-		$erreur= 0;
-	} 
-	else{
-		//$die('incompatibilité');
+	if(($_FILES['photoPres']) && isset($_POST['Categories']) && isset($_POST['Nom'])){ // si une photo de présentation a été uploadée, on la traite. On demand cat et nom pour l'organisation.
+		$logo = gestionImg($_FILES['photoPres'], $_POST['Categories'], $_POST['Nom']); // $nom
+		if($logo) $newComm->logo = $logo;
 	}
-	
-	if($erreur == 0){ // si erreur vaut encore 0, c'est qu'il n'y en a pas eu
 
-		$struct ="./images/".$cat."/".$nom."/";
+	// on échappe l'HTML pour éviter les injections de scripts
 
-		if(mkdir($struct, 0777, true)){
-			//$nom = "images/{$cat}/{$nom}/imagePres.{$extension_upload}"; // on crée le répertoire dans lequel l'image sera envoyée
-			$nom = $struct."photoPres.".$extension_upload;
-			$resultat = move_uploaded_file($img['tmp_name'],$nom);
-			return $nom;
+	$newComm->nom = gestionChamps('Nom');
+	$newComm->categorie = htmlspecialchars($corres[$_POST['Categories']]);
+	$newComm->site_web = gestionChamps('Site_Web');
+	$newComm->description = gestionChamps('Description');
+	$newComm->telephoneF = gestionChamps('TelephoneF');
+	$newComm->telephoneP = gestionChamps('TelephoneP');
+	$newComm->email = gestionChamps('Email');
+	$newComm->gerant = gestionChamps('Gerant');
+	$newComm->save();
+
+	function gestionImg($img,$cat,$nom){
+		$erreur = 0;
+		$extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' ); // on crée le tableau contenant les types autorisés 
+		/*if ($_FILES['icone']['size'] > $maxsize){ // on vérifie que le fichier ne dépasse le poids max autorisé
+			$erreur = "Le fichier est trop gros";
+		}*/
+	//1. strrchr renvoie l'extension avec le point (« . »).
+	//2. substr(chaine,1) ignore le premier caractère de chaine.
+	//3. strtolower met l'extension en minuscules.
+		$extension_upload = strtolower(  substr(  strrchr($img['name'], '.')  ,1)  );
+		if (in_array($extension_upload,$extensions_valides) ){
+			$erreur= 0;
+		} 
+		else{
+			//$die('incompatibilité');
 		}
+		
+		if($erreur == 0){ // si erreur vaut encore 0, c'est qu'il n'y en a pas eu
+
+			$struct ="./images/".$cat."/".$nom."/";
+
+			if(mkdir($struct, 0777, true)){
+				//$nom = "images/{$cat}/{$nom}/imagePres.{$extension_upload}"; // on crée le répertoire dans lequel l'image sera envoyée
+				$nom = $struct."photoPres.".$extension_upload;
+				$resultat = move_uploaded_file($img['tmp_name'],$nom);
+				return $nom;
+			}
+		}
+		else echo $erreur; // sinon on retourne l'erreur.
 	}
-	else echo $erreur; // sinon on retourne l'erreur.
+
+}
+else{
+	header("Location : NouveauCommercant.php");
 }
 ?>
 <!DOCTYPE html>
@@ -77,6 +81,8 @@ function gestionImg($img,$cat,$nom){
 
 </head>
 <body>
-	<p>Transfert réussi !</p>
+	<div class="confirmed">
+		<p>Transfert réussi !</p>
+	</div>
 </body>
 </html>

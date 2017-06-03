@@ -31,22 +31,29 @@ include 'main.php';
 			if($user->pass == $_POST['pw']): 
 				$_SESSION['name'] = $_POST['name'];//on stock le nom de l'utilisateur
 				$_SESSION['pw'] = $_POST['pw'];
-				?>
-				La connexion a été effectuée avec succès. Redirection automatique vers l'accueil dans 5 secondes.
-<?php			//header("./index.php");
+				include "success.php"
 ?>
-<?php 		else: ?>
-				Le mot de passe rentré n'est pas correct.
-<?php  		endif;
+<?php 		else: 
+				affiche(TRUE);	
+  			endif;
 
 
 ?>
-<?php		else: ?>
+<?php	else: 
+	affiche(FALSE);
+	endif;
+
+function affiche($flag){ ?>
 <div class="grid grid-pad" >
 	<section id="formulaireshow">
 		<div class="col-9-12">
 				<h1>Commercants</h1>
 			<div class="col-9-12">
+<?php 			if($flag):?>
+				<div class="errorInPage">
+					<p> Le mot de passe rentré est incorrect </p>
+				</div>
+<?php 	endif ?>
 				<form action='login.php' method="POST">
 					<label for="username">Nom d'utilisateur : </label><input type="text" name="username"/>
 					<label for="pw">Mot de passe : </label><input type="password" name="pw"/>
@@ -55,8 +62,8 @@ include 'main.php';
 			</div>
 		</div>
 	</section>
-</div>
-<?php	endif; ?>
+</div> 
+<?php } ?>
 
 	</body>
 </html>
