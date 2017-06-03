@@ -3,36 +3,27 @@ session_start();
 include 'main.php';
 ?>
 
-<?php include 'header.php';?>
+<?php include 'header2.php';?>
 <main>
 	<?php 	
 	if(isset($_SESSION["name"]) && isset($_SESSION["pass"])):?>
 	<section>
 		<h2>Les Commerçants :</h2>
-			<p><a href="newComm.php">Ajouter un commerçant</a></p>
+			<p><a href="NouveauCommercant.php">Ajouter un commerçant</a></p>
 			<p><a href="modifComm.php">modifier/supprimer un commerçant</a></p>
 
-		<h3>Les Commerçants :</h3>
+		<h2>Les Actualités :</h2>
+			<p><a>Ajouter un article</a></p>
+			<p><a>Modifier un article</a></p>
+		<h2>Utilisateur</h2>
+			<p><a href="newUser.php">Nouvel utilisateur</a></p>
+			<p><a href="logout.php">Déconnexion</a></p>
 
 	</section>
+<?php else:
+	include "error.php";
+endif;?>
 </main>
 <footer>
-	<div class="grid grid-pad">
-		<div class='col-1-1'>
-			<img src="logo-halle_footer.png" class="logoFooter col-1-3" alt="logo">
-			<ul id="footerMenu" class="col-1-3">
-				<li><a href="#" class="onglet">LA HALLE</a></li> <!-- &nbsp == espace insécable -->
-				<li><a href="#" class="onglet">LES COMMERÇANTS</a></li>
-				<li><a href="#" class="onglet">ACTUALITÉS</a></li>
-				<li><a href="#" class="onglet">INFO/CONTACT</a></li>
-			</ul>
-		</div>
-	</div>
-
-	<div class='col-1-1'>
-		<p class='droits'>&copy;Halle au Frais 2017</p>
-	</div>
-
-</footer>
 </body>
 </html>

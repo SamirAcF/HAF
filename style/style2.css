@@ -15,11 +15,10 @@ body{
 #commercant{
  	padding-top: 5.59% !important;
 
-}/*
-#actualites{
-	height:100%;	
-	background-color :#ADD8E6;
 }
+#actualites{
+	text-align: center;
+}/*;
 #infos{
 	height:100%;
 	background-color :#ADD8E6;

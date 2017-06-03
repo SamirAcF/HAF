@@ -1,23 +1,8 @@
 <?php 
 session_start();
 include 'main.php';
+include 'header2.php';
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Bienvenue sur le site de la Halle au Frais</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="style/normalize.css">
-	<link rel="stylesheet" type="text/css" href="style/style_formulaire.css">
-	<link rel="stylesheet" type="text/css" href="style/style2.css">
-	<link rel="stylesheet" type="text/css" href="style/simplegrid.css">
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> 
-	<!-- bootstrap ccs -->
-	<link rel="stylesheet" type="text/css" href="style/bootstrap.css">
-</head>
-<body>
-	<!-- HEADER--> 
 
 	<!-- CORPS DU SITE --> 
 	<!--FORMUALIRE VALIDE-->
@@ -80,28 +65,6 @@ include "success.php";
 	<!-- FORMULAIRE A REMPLIR -->
 
 <?php 	if(isset($_SESSION["name"]) && isset($_SESSION["pass"])): ?>
-
-	<header>
-		<div class="grid grid-pad">
-			<div class="col-2-12">
-				<div class="content2">
-					<img src="http://www.leshalles-amiens.fr/hallefrais/images/home/logo-halle.png" class="logo" alt="logo">
-				</div>
-			</div>
-			<div class="col-10-12">
-				<div class="content3">
-					<nav>
-						<ul id="menu">
-							<li><a href="#" class="onglet">LA HALLE</a></li> <!-- &nbsp == espace insécable -->
-							<li><a href="#" class="onglet">LES COMMERÇANTS</a></li>
-							<li><a href="#" class="onglet">ACTUALITÉS</a></li>
-							<li><a href="#" class="onglet">INFO/CONTACT</a></li>
-						</ul>	
-					</nav>	
-				</div>
-			</div>
-		</div>
-	</header>
 
 	<main>
 		<div class="grid grid-pad" >

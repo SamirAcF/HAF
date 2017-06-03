@@ -8,7 +8,7 @@ include 'main.php';
 <?php 	
 		if(isset($_SESSION["name"]) && isset($_SESSION["pass"])):?>
 		<div class="admin">
-			<a href="admin.php"><img src="images/admin.png" alt='gestion'/>
+			<a href="admin.php"><img src="images/admin.png" alt='gestion'/></a>
 		</div>
 <?php endif ?>
 		<div id="fullpage">
