@@ -1,5 +1,5 @@
 html{
-	font‑size: 62.5%;
+	font-size: 62.5%;
 }
 html,body,main{
 	height:100%;
@@ -7,31 +7,15 @@ html,body,main{
 body{
 	margin: 0px;
 }
-/*#accueil{
-	height:100%;
-	background-color :#ADD8E6;
 
-}*/
-#commercant{
- 	padding-top: 5.59% !important;
-
-}
-#actualites{
-	text-align: center;
-}/*;
-#infos{
-	height:100%;
-	background-color :#ADD8E6;
-}*/
 header{
   	position: fixed;
   	z-index: 1;
-  	padding-top: 20px;
-	/*padding-bottom: 20px;*/
+  	padding-top: 1.5em;
   	width: 100%;
   	display: inline-block;
   	font-family: 'Roboto', sans-serif;
-  	/*font-size: 16px;*/
+  	font-size: 1.2em;
   	background-color: #333;
 }
 
@@ -80,7 +64,7 @@ nav{
  }
  .titreSlide{
  	width:100%;
- 	margin-top: 0.06%;
+ 	margin-top: 1em;
  	font-size: 1.2em; 
  	text-align: center;
  	font-family: 'Catamaran', sans-serif;
@@ -89,7 +73,7 @@ nav{
  	background-color: #FFF;
  }
  .nomComm{
- 	font-size: 1.3em;
+ 	font-size: 2.6em;
  	font-weight: lighter;
  }
  .boite{
@@ -129,13 +113,22 @@ nav{
  	margin: 5px;
  }
  .admin{
+ 	position: fixed;
  	float: left;
  	z-index: 3;
  	margin-top: 50vh;
- 	transform: translateY(-50%);
+ 	transform: translateY(-150%);
  }
  .admin img{
  	max-width: 12vh;
+ }
+ .contenu{
+ 	margin-top: 10vh;
+
+ }
+ .titreForm{
+ 	margin-bottom: 1em;
+ 	border-bottom: 2px solid  #b1c216;
  }
 section{
 	height: 100%;
@@ -148,7 +141,7 @@ section{
   	width: 100%;
   	display: block;
   	font-family: 'Roboto', sans-serif;
-  	font-size: 16px;
+  	font-size: 0.5em;
   	background-color: #C0C0C0;
 }
 .Hboite h2{
@@ -188,6 +181,11 @@ section{
 	font-size: 70%;
 	text-align:center;
 }
+.map{
+	margin-left: 50vw;
+	transform: translateX(-50%);
+	margin-top: -10%;
+}
 .credits p{
 
 	color: #333;
@@ -209,4 +207,11 @@ li.active>a {
  	color:#f0f0f0;
  	font-size: 1.1em;
 	font-weight : bolder;
+}
+footer{
+	position: fixed;
+	transform: translateX(-50%);
+	bottom: 0;
+	float: left;
+	margin-left: 50vw;
 }

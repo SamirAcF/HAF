@@ -45,7 +45,7 @@ include 'main.php';
 		<?php if(isset($_POST['user'])):
 			$newUser = Model::factory('admin')->create();
 			$newUser->user = gestionChamps('user');
-			$newUser->pass = hash("sha512",gestionChamps('pass'));
+			$newUser->pass = cryptage(gestionChamps('pass'));
 			$newUser->save();
 
 			include "success.php";
@@ -60,7 +60,7 @@ include 'main.php';
 					<form action="newUser.php" method="POST">
 						<label for='user'>Nom D'utilisateur : </label><input type="text" name="user" class="form-control">
 						<label for='pass'>Mot de passe : </label><input type="password" name="pass" class="form-control">
-						<input type="submit" name="supprimer" value="Créer" class="form-control"/>
+						<input type="submit" name="create" value="Ajouter" class="form-control"/>
 					</form>
 		<?php endif; ?>
 	</main>

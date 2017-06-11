@@ -24,7 +24,6 @@ $commAmod->telephoneP = gestionChamps('TelephoneP');
 $commAmod->email = gestionChamps('Email');
 $commAmod->save();
 
-echo "fdsfdfd".$commAmod->nom;
 
 function gestionChamps($nomChamps){
 	if(isset($_POST[$nomChamps])){

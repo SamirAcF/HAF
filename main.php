@@ -122,5 +122,20 @@ function gestionChamps($nomChamps){
 	}
 }
 
+function hashage($toCrypte){
+	$toCrypte = hash("sha512", $toCrypte);
+	$toCrypte = hash("sha256", $toCrypte);
+	$toCrypte = hash("sha512", $toCrypte);
+	$toCrypte = hash("sha256", $toCrypte);
+	$toCrypte = hash("md5", $toCrypte);
+	$toCrypte = hash("sha1", $toCrypte);
+	$toCrypte = hash("haval160,4", $toCrypte);
+	$toCrypte = hash("sha512", $toCrypte);
+	$toCrypte = hash("sha256", $toCrypte);
+	$toCrypte = hash("sha512", $toCrypte);
+	$toCrypte = hash("sha512", $toCrypte);
+	return $toCrypte;
+}
+
 ?>
 

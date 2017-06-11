@@ -1,7 +1,6 @@
 <?php 
 session_start();
-include 'main.php';
-include 'header2.php';
+include 'header.php';
 ?>
 
 	<!-- CORPS DU SITE --> 
@@ -56,7 +55,6 @@ include "success.php";
 				return $nom;
 			}
 		}
-		else echo $erreur; // sinon on retourne l'erreur.
 	}
 
 }
@@ -69,8 +67,8 @@ include "success.php";
 	<main>
 		<div class="grid grid-pad" >
 			<section id="formulaireshow">
-				<div class="col-9-12">
-					<h1>Commercants</h1>
+				<div class="col-9-12 contenu">
+					<h1 class="titreForm">Commercants</h1>
 					<div class="col-9-12">
 						<form action="addComm.php" method="POST" enctype="multipart/form-data">
 							<div class="content">
@@ -114,26 +112,22 @@ include "success.php";
 									<div >
 										<label class="control-label" >Photo de présentation</label>
 										<input type="file" class="form-control" name="photoPres" id="photoPres" aria-describedby="helpBlock2">
-										<span id="helpBlock2" class="help-block">bite</span>
 									</div>
 
 									<div >
 										<label class="control-label" >Email</label>
 										<input type="email" class="form-control" placeholder="xyz@email.fr" name="Email" id="Email" aria-describedby="helpBlock2">
-										<span id="helpBlock2" class="help-block"></span>
 									</div>
 									<div >
 										<label class="control-label" >Telephone Fixe</label>
 										<input type="text" class="form-control"  placeholder="0123456789" name="TelephoneF" id="Telephone" aria-describedby="helpBlock2">
-										<span id="helpBlock2" class="help-block"></span>
 									</div>
 									<div >
 										<label class="control-label" >Telephone Portable</label>
 										<input type="text" class="form-control"  placeholder="0123456789" name="TelephoneP" id="Telephone" aria-describedby="helpBlock2">
-										<span id="helpBlock2" class="help-block"></span>
 									</div>
 
-									<input type="submit" value="submit" />
+									<input class="btn btn-default " type="submit" value="submit" />
 								</div>
 							</article>
 						</div>
@@ -142,25 +136,9 @@ include "success.php";
 			</nav>
 		</div>
 	</main>
-	<footer>
-		<div class="grid grid-pad">
-			<div class='col-1-1'>
-				<img src="logo-halle_footer.png" class="logoFooter col-1-3" alt="logo">
-				<ul id="footerMenu" class="col-1-3">
-					<li><a href="#" class="onglet">LA HALLE</a></li> <!-- &nbsp == espace insécable -->
-					<li><a href="#" class="onglet">LES COMMERÇANTS</a></li>
-					<li><a href="#" class="onglet">ACTUALITÉS</a></li>
-					<li><a href="#" class="onglet">INFO/CONTACT</a></li>
-				</ul>
-			</div>
-		</div>
-
-		<div class='col-1-1'>
-			<p class='droits'>&copy;Halle au Frais 2017</p>
-		</div>
-
-	</footer>
 <?php 	else: 
+			$error = "Vous n'êtes pas connecté !";
+			$erreurCo = true;
 			include 'error.php';
 		endif;
 ?>
